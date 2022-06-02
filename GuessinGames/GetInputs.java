@@ -3,20 +3,28 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class GetInputs {
-    String inputLine;
+    int inputLine;
+    boolean isAlive = true;
 
-    public String getUserInputString(String prompt) {
-        System.out.println(prompt + " ");
-        try {
-            BufferedReader is = new BufferedReader(
-                    new InputStreamReader(System.in));
-            inputLine = is.readLine();
-            if (inputLine.length() == 0)
-                return null;
-        } catch (IOException e) {
-            System.out.println("IOException " + e);
+    public int getUserInputString(String prompt) {
+
+        while (isAlive) {
+            System.out.println(prompt + " ");
+            try {
+                BufferedReader is = new BufferedReader(
+                        new InputStreamReader(System.in));
+                inputLine = Integer.parseInt(is.readLine());
+            } catch (IOException e) {
+                System.out.println("IOException " + e);
+            }
+            if ((inputLine >= 0) && (inputLine <= 9)) {
+                break;
+
+            } else {
+                getUserInputString("invalid input! " + " " + prompt);
+            }
         }
-        return inputLine;
 
+        return inputLine;
     }
 }

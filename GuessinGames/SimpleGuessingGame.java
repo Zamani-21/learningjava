@@ -40,6 +40,9 @@ public class SimpleGuessingGame {
                 System.out.println("player three is right");
 
                 isAlive = false;
+            } else {
+                System.out.println("all players are wrong! Try again");
+                System.out.println();
             }
         }
     }
