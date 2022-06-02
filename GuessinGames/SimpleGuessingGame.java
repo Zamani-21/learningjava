@@ -12,6 +12,9 @@ public class SimpleGuessingGame {
         int playerTwoGuess = 0;
         int playerThreeGuess = 0;
         boolean isAlive = true;
+        boolean playerOneIsRight = false;
+        boolean playerTwoIsRight = false;
+        boolean playerThreeIsRight = false;
 
         gameGuess = (int) (Math.random() * 10);
         System.out.println("the game guess is " + gameGuess);
@@ -26,20 +29,22 @@ public class SimpleGuessingGame {
             System.out.println("player three is guessing " + playerThreeGuess);
 
             if (gameGuess == playerOneGuess) {
-                System.out.println("the game guess is " + gameGuess);
-                System.out.println("player one is right");
+                playerOneIsRight = true;
 
-                isAlive = false;
-            } else if (gameGuess == playerTwoGuess) {
-                System.out.println("the game guess is " + gameGuess);
-                System.out.println("player two is right");
+            }
+            if (gameGuess == playerTwoGuess) {
+                playerTwoIsRight = true;
 
-                isAlive = false;
-            } else if (gameGuess == playerThreeGuess) {
-                System.out.println("the game guess is " + gameGuess);
-                System.out.println("player three is right");
+            }
+            if (gameGuess == playerThreeGuess) {
+                playerThreeIsRight = true;
 
-                isAlive = false;
+            }
+            if (playerOneIsRight || playerTwoIsRight || playerThreeIsRight) {
+                System.out.println("player one is right? " + playerOneIsRight);
+                System.out.println("player two is right? " + playerTwoIsRight);
+                System.out.println("player three is right? " + playerThreeIsRight);
+                break;
             } else {
                 System.out.println("all players are wrong! Try again");
                 System.out.println();
